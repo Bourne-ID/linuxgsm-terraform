@@ -18,7 +18,7 @@ This script will:
 * A Linode Account ([free trail accepted](https://linuxgsm.com/lgsm-linode))
 * [Terraform Installation](https://learn.hashicorp.com/terraform/getting-started/install)
 
-##Usage Instructions
+## Usage Instructions
 
 **Please be aware that this will use your Free Trial Allowance or will cost you money! Please check with Linode if you are unsure what this means before continuing!**
 
