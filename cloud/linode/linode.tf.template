@@ -29,7 +29,7 @@ resource "linode_instance" "terraform-linuxgsm" {
       "sed -i 's/githubbranch=\"master\"/githubbranch=\"${terra_githubbranch}\"/g' /home/linuxgsm/linuxgsm.sh",
 
       # sudo su doesn't work here for terraform 0.11.11 (provider 1.5.0) therefore run commands as user instead of su
-      "sudo -H -u linuxgsm bash -c 'cd ~; /home/linuxgsm/linuxgsm.sh csgoserver'",
+      "sudo -H -u linuxgsm bash -c 'cd ~; /home/linuxgsm/linuxgsm.sh ${terra_gameserver}'",
       "sudo -H -u linuxgsm bash -c 'cd ~; /home/linuxgsm/${terra_gameserver} ai'",
       "sudo -H -u linuxgsm bash -c 'cd ~; ./${terra_gameserver} start'"
     ]
