@@ -23,11 +23,11 @@ if [[ ! -f ./${terra_privatekeylocation} ]]; then
     echo "Private key ${terra_privatekeylocation} does not exist. Generating new private and public key. Please use this key to connect to the server over SSH"
     echo "The certificate does not have a passphrase - do not check into version control and treat it like a password!"
     ssh-keygen -a 100 -t ed25519 -N '' -f ./${terra_privatekeylocation}
-    sleep 2
+    sleep 3
 
 else
-    echo "Using private key ${terra_privatekeylocation}.\n"
-    sleep 2
+    echo "Using private key ${terra_privatekeylocation}."
+    sleep 3
 fi
 
 # Perform variable replacement on terraform template
