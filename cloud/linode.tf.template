@@ -8,8 +8,7 @@ resource "linode_instance" "terraform-web" {
   group = "${terra_linodegroup}"
   region = "${terra_linoderegion}"
   type = "${terra_linodetype}"
-  authorized_keys = [ "${file("${terra_publickeylocation}")}" ]
-  #root_pass = "letmeguess"
+  authorized_keys = [ "${linodepublickey}" ]
 
   connection {
     private_key = "${file("${terra_privatekeylocation}")}"

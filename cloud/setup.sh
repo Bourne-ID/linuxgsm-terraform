@@ -15,6 +15,9 @@ fi
 # Read API file content to var
 export linodeapikey=`cat ${terra_linodeapikeyfile}`
 
+# Read the first line of the public key (ssh-keygen likes new lines...)
+export linodepublickey=`head ${terra_publickeylocation} -n 1`
+
 # Check to see if public and private key exists
 if [[ ! -f ./${terra_privatekeylocation} ]]; then
     echo "Private key ${terra_privatekeylocation} does not exist. Generating new private and public key. Please use this key to connect to the server over SSH"
@@ -32,5 +35,7 @@ envsubst < linode.tf.template > linode.tf
 
 #remove sensitive information from export var
 unset linodeapikey
+unset linodepublickey
+
 terraform init
 terraform apply
