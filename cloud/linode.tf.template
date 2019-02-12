@@ -2,7 +2,7 @@ provider "linode" {
   token = "${linodeapikey}"
 }
 
-resource "linode_instance" "terraform-web" {
+resource "linode_instance" "terraform-linuxgsm" {
   image = "${terra_linodeimage}"
   label = "${terra_linodelabel}"
   group = "${terra_linodegroup}"

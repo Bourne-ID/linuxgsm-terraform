@@ -20,7 +20,7 @@ export terra_linodeapikeyfile="./.linodeapikey"
 
 # You don't have to change these settings unless you want to
 export terra_linodeimage="linode/ubuntu18.04"
-export terra_linodelabel="Terraform-Web-Example2"
-export terra_linodegroup="LinodeTerraform"
+export terra_linodelabel="LinuxGSM-Terraform"
+export terra_linodegroup="LinuxTerraform"
 export terra_linoderegion="us-east"
 export terra_linodetype="g6-standard-1" #See https://api.linode.com/v4/linode/types - highly recommended to improve this for demanding game servers, and lower this to keep within the free trial!
