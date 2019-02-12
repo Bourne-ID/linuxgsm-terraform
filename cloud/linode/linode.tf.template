@@ -26,7 +26,7 @@ resource "linode_instance" "terraform-linuxgsm" {
       # Modify the startup script to use the config.sh file variables for the user, repo and branch
       "sed -i 's/githubuser=\"GameServerManagers\"/githubuser=\"${terra_githubuser}\"/g' /home/linuxgsm/linuxgsm.sh",
       "sed -i 's/githubrepo=\"LinuxGSM\"/githubrepo=\"${terra_githubrepo}\"/g' /home/linuxgsm/linuxgsm.sh",
-      "sed -i 's/githubbranch=\"master\"/githubbranch=\"${terra_githubbranch}\"/g' /home/linuxgsm/linuxgsm.sh",
+      "sed -i 's;githubbranch=\"master\";githubbranch=\"${terra_githubbranch}\";g' /home/linuxgsm/linuxgsm.sh",
 
       # sudo su doesn't work here for terraform 0.11.11 (provider 1.5.0) therefore run commands as user instead of su
       "sudo -H -u linuxgsm bash -c 'cd ~; /home/linuxgsm/linuxgsm.sh ${terra_gameserver}'",
