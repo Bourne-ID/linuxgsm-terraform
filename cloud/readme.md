@@ -28,8 +28,8 @@ This script will:
 4. Save the API key to `.linodeapikey`
 5. Review `settings.sh` and configure the variables. 
 6. Run `./setup.sh`
-7. Review the Terraform prompt for what virtual machines are being created and destroyed. **It is your responsibility to ensure what the plan says is what you exect it to do!**
+7. Review the Terraform prompt containing the virtual machines are being created and destroyed. **It is your responsibility to ensure what the plan says is what you exect it to do!**
 8. Type `yes` to accept the plan and watch the Linode environment be created! 
 
 ## Tear Down
-Use the command `terraform destroy` to destroy all created images using this script. Keeping servers alive will use your free trial allocation to will cost money!
+Use the command `terraform destroy` to destroy all created images using this script. Keeping servers alive will use your free trial allocation and will eventually to will cost money!
