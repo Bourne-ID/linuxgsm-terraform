@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Read settings.sh file. For now we'll assume everything is set up correctly
-. settings.sh
+. ./settings.sh
 
 # Check that the API key file exists. Warn user if it does not
 if [[ ! -f ${terra_linodeapikeyfile} ]]; then
