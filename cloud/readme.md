@@ -6,11 +6,11 @@ This folder contains the information required to quickly spin up a development o
 This script will: 
 * Use a file-based Linode APIv4 key to authenticate against Linode
 * Automatically generate a secure ED25519 private/public key for authentication to the terraformed server
-* Can be defined for any valid game server under any repository or branch
+* Can be defined for [any valid game server](https://github.com/GameServerManagers/LinuxGSM/blob/master/lgsm/data/serverlist.csv) under any repository or branch
 * Will automatically start the server once the provisioning is complete
 
 ## What is Terraform and why use it?
- Terraform does what the name suggests, it will build and transform an environment to support life, in this case, LinuxGSM. 
+ Terraform does what the name suggests: it will build and transform an environment to support life, in this case, LinuxGSM. 
  
  This project is aimed at LinuxGSM developers wanting to quickly spin up their game server from their own repository with minimal effort of provisioning their own server. 
  
