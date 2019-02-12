@@ -1,4 +1,4 @@
-# LinuxGSM Terraform for LinuxGSM
+# Terraform for LinuxGSM
 
 ## Introduction
 This folder contains the information required to quickly spin up a development or production game server using LinuxGSM. 
