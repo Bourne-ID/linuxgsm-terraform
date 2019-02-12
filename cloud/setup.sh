@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Read settings.sh file. For now we'll assume everything is set up correctly
 . ./settings.sh
