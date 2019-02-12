@@ -1,0 +1,42 @@
+provider "linode" {
+  token = "${linodeapikey}"
+}
+
+resource "linode_instance" "terraform-web" {
+  image = "${terra_linodeimage}"
+  label = "${terra_linodelabel}"
+  group = "${terra_linodegroup}"
+  region = "${terra_linoderegion}"
+  type = "${terra_linodetype}"
+  authorized_keys = [ "${file("${terra_publickeylocation}")}" ]
+  #root_pass = "letmeguess"
+
+  connection {
+    private_key = "${file("${terra_privatekeylocation}")}"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      # Add the linuxgsm user and enable nopasswd sudo
+      "useradd -d /home/linuxgsm -m linuxgsm -s /bin/bash --groups sudo",
+      "echo 'linuxgsm ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo",
+
+      # Download startup script and set permissions
+      "wget -O /home/linuxgsm/linuxgsm.sh https://linuxgsm.sh && chmod +x /home/linuxgsm/linuxgsm.sh && chown linuxgsm:linuxgsm /home/linuxgsm/linuxgsm.sh",
+
+      # Modify the startup script to use the config.sh file variables for the user, repo and branch
+      "sed -i 's/githubuser=\"GameServerManagers\"/githubuser=\"${terra_githubuser}\"/g' /home/linuxgsm/linuxgsm.sh",
+      "sed -i 's/githubrepo=\"LinuxGSM\"/githubrepo=\"${terra_githubrepo}\"/g' /home/linuxgsm/linuxgsm.sh",
+      "sed -i 's/githubbranch=\"master\"/githubbranch=\"${terra_githubbranch}\"/g' /home/linuxgsm/linuxgsm.sh",
+
+      # sudo su doesn't work here for terraform 0.11.11 (provider 1.5.0) therefore run commands as user instead of su
+      "sudo -H -u linuxgsm bash -c 'cd ~; /home/linuxgsm/linuxgsm.sh csgoserver'",
+      "sudo -H -u linuxgsm bash -c 'cd ~; /home/linuxgsm/${terra_gameserver} ai'",
+      "sudo -H -u linuxgsm bash -c 'cd ~; ./${terra_gameserver} start'"
+    ]
+  }
+
+}
+
+
+
