@@ -12,7 +12,7 @@
     name: "{{ lgsm_user }}"
     groups: "sudo"
     comment: "LinuxGSM User"
-    shell: "/bin/bash"
+    shell: "/bin/bash" 
     createhome: yes
     append: yes
     state: present

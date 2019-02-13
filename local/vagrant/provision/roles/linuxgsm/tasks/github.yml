@@ -1,9 +1,11 @@
 ---
 - name: Download LinuxGSM
   get_url:
-    url: {{ lgsm_url }}
+    url: "{{ lgsm_url }}"
     dest: /home/{{ lgsm_user }}/linuxgsm.sh
     mode: 0770
+    owner: "{{ lgsm_user }}"
+    group: "{{ lgsm_user }}"
 - name: Replace github_user
   replace:
     path: /home/{{ lgsm_user }}/linuxgsm.sh
@@ -13,12 +15,12 @@
   replace:
     path: /home/{{ lgsm_user }}/linuxgsm.sh
     regexp:  "githubrepo=\"LinuxGSM\""
-    replace: "githubuser=\"{{ github_repo }}\""
+    replace: "githubrepo=\"{{ github_repo }}\""
 - name: Replace github_branch
   replace:
     path: /home/{{ lgsm_user }}/linuxgsm.sh
     regexp:  "githubbranch=\"master\""
-    replace: "githubuser=\"{{ github_branch }}\""
+    replace: "githubbranch=\"{{ github_branch }}\""
 
 
 

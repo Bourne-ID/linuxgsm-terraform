@@ -1,3 +1,13 @@
 ---
 - name: Initiate Game Server
-  shell:
+  shell: "/home/{{ lgsm_user }}/linuxgsm.sh {{ gameserver }}"
+  args:
+    chdir: "/home/{{ lgsm_user }}"
+  become: true
+  become_user: "{{ lgsm_user }}"  
+- name: Install {{ gameserver }} 
+  shell: /home/{{ lgsm_user }}/{{ gameserver }} ai
+  args:
+    chdir: "/home/{{ lgsm_user }}"
+  become: true
+  become_user: "{{ lgsm_user }}"

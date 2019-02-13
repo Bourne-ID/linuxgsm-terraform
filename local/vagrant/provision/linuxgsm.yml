@@ -1,12 +1,10 @@
 ---
-- hosts: all
+- hosts: localhost
   vars:
     gameserver: csgoserver # Full list at https://github.com/GameServerManagers/LinuxGSM/blob/master/lgsm/data/serverlist.csv
     github_user: GameServerManagers
     github_repo: LinuxGSM
     github_branch: develop # See https://github.com/GameServerManagers/LinuxGSM/issues/2177
     # Private/Public keys are controlled by Vagrant. Assuming you use `vagrant ssh` then there's no need to generate certificates.
-
-
-
-
+  roles:
+    - name: linuxgsm 
