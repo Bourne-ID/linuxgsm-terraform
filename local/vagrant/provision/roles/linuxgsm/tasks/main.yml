@@ -1,0 +1,7 @@
+---
+- name: Configure User
+  import_tasks: user.yml
+- name: Configure LinuxGSM Game Server Files
+  import_tasks: github.yml
+- name: Initiate The Server
+  import_tasks: server.yml

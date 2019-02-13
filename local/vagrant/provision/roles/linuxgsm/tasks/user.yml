@@ -1,0 +1,18 @@
+---
+- name: Make user {{ lgsm_user }} no password sudo
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^%linuxgsm'
+    line: '%linuxgsm ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+    state: present
+
+- name: Create user {{ lgsm_user }}
+  user:
+    name: "{{ lgsm_user }}"
+    groups: "sudo"
+    comment: "LinuxGSM User"
+    shell: "/bin/bash"
+    createhome: yes
+    append: yes
+    state: present
