@@ -3,13 +3,17 @@ Vagrant.configure("2") do |config|
   config.vm.hostname="linuxgsmvagrant"
 
   # Private network (no collisions) with relevant port forwarding
-  graylog.vm.network :public_network, type: "dhcp"
+  config.vm.network :public_network, type: "dhcp"
+
+  config.disksize.size = '200GB'
 
   # Modify the VM for minimum spec (4GB RAM)
-  graylog.vm.provider :virtualbox do |v|
+  config.vm.provider :virtualbox do |v|
     v.name = "linuxgsmvagrant"
     v.memory = 3072
     v.cpus = 2
+
+
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
@@ -18,7 +22,7 @@ Vagrant.configure("2") do |config|
   # graylog.vm.synced_folder "provisioning", "/localprovisioning", :mount_options => ["ro"]
 
   # Run the local provisioning for Graylog and Nagios.
-  graylog.vm.provision "application", type: "ansible_local" do |ansible|
+  config.vm.provision "application", type: "ansible_local" do |ansible|
     ansible.playbook = "provision/linuxgsm.yml"
     ansible.limit = "all"
   end

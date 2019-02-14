@@ -5,9 +5,11 @@
     chdir: "/home/{{ lgsm_user }}"
   become: true
   become_user: "{{ lgsm_user }}"  
-- name: Install {{ gameserver }} 
+- name: Install {{ gameserver }} (this may take a while and will be quiet for a while until the next Vagrant version)
   shell: /home/{{ lgsm_user }}/{{ gameserver }} ai
   args:
     chdir: "/home/{{ lgsm_user }}"
   become: true
   become_user: "{{ lgsm_user }}"
+  register: output
+- debug: var=vagrant.
